@@ -1,0 +1,30 @@
+
+.opcoes-coluna {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: top;
+}
+
+.opcoes-coluna label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.opcoes-coluna input[type="checkbox"],
+.opcoes-coluna input[type="radio"] {
+  display: block;
+}
+
+
+input[type="text"] {
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 0 5px 0 rgb(136, 136, 136);
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 5px;
+  float: right;
+}
