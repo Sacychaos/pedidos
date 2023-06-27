@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-<h1>Cadastrar Pedidos do Dia</h1>
+<h1>Cadastrar Cardápio do Dia</h1>
 
 <div class="card">
 
@@ -49,6 +49,10 @@
 
         <hr class="sidebar-divider">
 
+        <div>
+            <h2>Cardápios Cadastrados:</h2>
+        </div>
+
         <!-- Formulário para selecionar a data -->
         <form action="{{ route('menus.index') }}" method="GET" class="mb-4">
             <div class="form-group">
@@ -64,9 +68,7 @@
         <!-- Exibir os menus cadastrados para a data selecionada -->
         @if ($menus->isNotEmpty())
         <div class="card mt-4">
-            <div>
-                <h4>Menus Cadastrados para a Data Selecionada:</h4>
-            </div>
+
             <div class="card-body">
 
                 @foreach ($menus as $menu)

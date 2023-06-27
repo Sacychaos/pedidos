@@ -8,7 +8,7 @@
 
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="name">
+        <input type="text" class="form-control" id="nome" name="name" placeholder="Ex: Cartão">
     </div>
 
     <div class="text-right">
@@ -21,7 +21,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Nome</th>
             <th>Ações</th>
         </tr>
@@ -29,7 +28,6 @@
     <tbody>
         @foreach($pagamentos as $pagamento)
         <tr>
-            <td>{{ $pagamento->id }}</td>
             <td>{{ $pagamento->name }}</td>
             <td>
                 <form action="{{ route('payments.destroy', ['payment' => $pagamento->id]) }}" method="POST"

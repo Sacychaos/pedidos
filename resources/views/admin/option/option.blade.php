@@ -8,12 +8,13 @@
 
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="name">
+        <input type="text" class="form-control" id="nome" name="name" placeholder="Ex: Arroz, Churrasco, Salada...">
     </div>
 
     <div class="form-group">
         <label for="categoria">Categoria</label>
         <select class="form-control" id="categoria" name="category_id">
+            <option value="" disabled selected>Selecione uma opção</option> <!-- Opção vazia como padrão -->
             @foreach($categorias as $categoria)
             <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
             @endforeach
@@ -30,7 +31,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Nome</th>
             <th>Categoria</th>
             <th>Ações</th>
@@ -39,7 +39,6 @@
     <tbody>
         @foreach($opcoes as $opcao)
         <tr>
-            <td>{{ $opcao->id }}</td>
             <td>{{ $opcao->name }}</td>
             <td>{{ $opcao->category->name }}</td>
             <td>

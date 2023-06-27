@@ -12,17 +12,16 @@
     <title>Admin</title>
 
     <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
 
     <!-- Bootstrap JS -->
-    <script src="js/bootstrap.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
-    <link href="/css/cadpedidos.css" rel="stylesheet">
+
 
 </head>
 
@@ -39,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <img src="img\logo_guardiao.png" style="max-width:100%;height:auto;">
+                <img src="{{ asset('img\logo_guardiao.png') }}" style="max-width:100%;height:auto;">
             </a>
 
             <!-- Divider -->
@@ -188,7 +187,7 @@
 
                 <!-- Início do Conteúdo da Página -->
                 <div>
-                    <div id="page-content-wrapper">
+                    <div id="page-content-wrapper" class="mx-4">
                         <!-- Aqui o conteúdo dinâmico das páginas do CRUD será carregado -->
                         @yield('content')
                     </div>
@@ -199,19 +198,6 @@
         </div>
     </div>
 
-
-
-
-
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2023</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
     <!-- Modal para exibir mensagens de erro -->
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
         aria-hidden="true">
@@ -275,12 +261,10 @@
     </script>
     @endif
 
+
     <!-- Custom scripts for all pages-->
-    <sc script src="/js/admin.js">
-        </script>
+    <script src="{{ asset('js/geral.js') }}"></script>
+
 </body>
-
-
-
 
 </html>

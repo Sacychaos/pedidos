@@ -92,7 +92,7 @@
                 </nav>
                 <!-- End of Topbar -->
                 <div>
-                    <div id="page-content-wrapper">
+                    <div id="page-content-wrapper" class="mx-4">
                         <!-- Aqui o conteúdo dinâmico das páginas do CRUD será carregado -->
                         @yield('content')
                     </div>
@@ -103,16 +103,6 @@
     </div>
 
     <!-- End of Main Content -->
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>&copy; Your Website 2023</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
-
 
     <!-- Modal para exibir mensagens de erro -->
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
@@ -150,7 +140,6 @@
     </script>
     @endif
 
-
     <!-- Modal para exibir mensagens de sucesso -->
     <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
         aria-hidden="true">
@@ -177,10 +166,6 @@
     </script>
     @endif
 
-
 </body>
-
-
-
 
 </html>

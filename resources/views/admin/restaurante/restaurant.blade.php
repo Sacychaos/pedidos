@@ -8,12 +8,12 @@
 
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="name">
+        <input type="text" class="form-control" id="nome" name="name" placeholder="Ex: Smoker Express">
     </div>
 
     <div class="form-group">
         <label for="phone">Telefone</label>
-        <input type="tel" class="form-control" id="phone" name="phone">
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ex: (17) 9 9999-9999">
     </div>
 
     <div class="text-right">
