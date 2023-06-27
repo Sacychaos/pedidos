@@ -30,4 +30,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * Set the username attribute and convert it to uppercase before saving.
+     */
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = strtoupper($value);
+    }
 }

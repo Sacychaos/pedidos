@@ -21,14 +21,14 @@
             </div>
 
             <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="Senha" autocomplete="new-password"
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Senha" autocomplete="new-password"
                     class="form-control" />
             </div>
 
             <div class="form-group">
                 <label for="sector_id">Setor</label>
-                <select name="sector_id" class="form-select">
+                <select name="sector_id" class="form-select" required>
                     <option value="" disabled selected>Escolha um Setor</option>
                     @foreach ($sectors as $sector)
                     <option value="{{ $sector->id }}">{{ $sector->name }}</option>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <div class="form-check">
                     <input type="checkbox" id="is_admin" name="is_admin" class="form-check-input">
-                    <label for="is_admin" class="form-check-label">Administrador</label>
+                    <label for="is_admin" class="form-check-label">Administrador?</label>
                 </div>
             </div>
 

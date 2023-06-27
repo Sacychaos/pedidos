@@ -18,6 +18,9 @@ class AuthController extends Controller
     {
         $credentials = $request->only('username', 'password');
 
+        // Converter o username para maiúsculas
+        $credentials['username'] = strtoupper($credentials['username']);
+
         if (Auth::attempt($credentials)) {
             // Autenticação bem-sucedida
 

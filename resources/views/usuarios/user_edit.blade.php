@@ -37,9 +37,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Atualizar</button>
     </form>
-    @if (session()->has('message'))
-    {{ session()->get('message') }}
-    @endif
 </div>
 
 
