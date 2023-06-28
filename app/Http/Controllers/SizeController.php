@@ -7,27 +7,17 @@ use Illuminate\Http\Request;
 
 class SizeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $tamanhos = Size::all();
-        return view('/admin/sizes.size', compact('tamanhos'));
+        return view('admin.sizes.size', compact('tamanhos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $tamanhos = Size::all();
-        return view('admin.sizes.size_create', compact('tamanhos'));
+        return view('admin.sizes.size_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -41,19 +31,44 @@ class SizeController extends Controller
         return redirect()->route('sizes.index')->with('success', 'Tamanho criado com sucesso.');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function edit($id)
     {
-        $size = Size::find($id);
+        $tamanho = Size::find($id);
 
-        if (!$size) {
+        if (!$tamanho) {
             return redirect()->route('sizes.index')->with('error', 'Tamanho não encontrado.');
         }
 
-        $size->delete();
+        return view('admin.sizes.size_edit', compact('tamanho'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        $tamanho = Size::find($id);
+
+        if (!$tamanho) {
+            return redirect()->route('sizes.index')->with('error', 'Tamanho não encontrado.');
+        }
+
+        $tamanho->name = $request->input('name');
+        $tamanho->save();
+
+        return redirect()->route('sizes.index')->with('success', 'Tamanho atualizado com sucesso.');
+    }
+
+    public function destroy($id)
+    {
+        $tamanho = Size::find($id);
+
+        if (!$tamanho) {
+            return redirect()->route('sizes.index')->with('error', 'Tamanho não encontrado.');
+        }
+
+        $tamanho->delete();
 
         return redirect()->route('sizes.index')->with('success', 'Tamanho excluído com sucesso.');
     }

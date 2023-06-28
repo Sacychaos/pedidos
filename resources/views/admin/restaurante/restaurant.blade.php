@@ -39,6 +39,10 @@
             <td>{{ $restaurante->name }}</td>
             <td>{{ $restaurante->phone }}</td>
             <td>
+
+                <a href="{{ route('restaurants.edit', ['restaurant' => $restaurante->id]) }}"
+                    class="btn btn-primary">Editar</a>
+
                 <form action="{{ route('restaurants.destroy', ['restaurant' => $restaurante->id]) }}" method="POST"
                     style="display: inline;">
                     @csrf

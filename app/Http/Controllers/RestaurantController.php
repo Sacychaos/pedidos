@@ -56,4 +56,37 @@ class RestaurantController extends Controller
 
         return redirect()->route('restaurants.index')->with('success', 'Restaurante excluído com sucesso.');
     }
+
+    public function edit($id)
+    {
+        $restaurante = Restaurant::find($id);
+
+        if (!$restaurante) {
+            return redirect()->route('restaurants.index')->with('error', 'Restaurante não encontrado.');
+        }
+
+        return view('/admin/restaurante.restaurant_edit', compact('restaurante'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'max:16',
+        ]);
+
+        $restaurante = Restaurant::find($id);
+
+        if (!$restaurante) {
+            return redirect()->route('restaurants.index')->with('error', 'Restaurante não encontrado.');
+        }
+
+        $restaurante->name = $request->input('name');
+        $restaurante->phone = $request->input('phone');
+        $restaurante->save();
+
+        return redirect()->route('restaurants.index')->with('success', 'Restaurante atualizado com sucesso.');
+    }
+
+
 }

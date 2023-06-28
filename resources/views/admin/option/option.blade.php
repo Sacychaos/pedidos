@@ -26,6 +26,7 @@
     </div>
 </form>
 
+
 <h1>Opções Cadastradas</h1>
 
 <table class="table">
@@ -42,6 +43,9 @@
             <td>{{ $opcao->name }}</td>
             <td>{{ $opcao->category->name }}</td>
             <td>
+
+                <a href="{{ route('options.edit', ['option' => $opcao->id]) }}" class="btn btn-primary">Editar</a>
+
                 <form action="{{ route('options.destroy', ['option' => $opcao->id]) }}" method="POST"
                     style="display: inline;">
                     @csrf
@@ -54,4 +58,6 @@
         @endforeach
     </tbody>
 </table>
+
+
 @endsection

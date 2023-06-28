@@ -59,4 +59,36 @@ class OptionController extends Controller
 
         return redirect()->route('options.index')->with('success', 'Opção excluída com sucesso.');
     }
+
+    public function edit($id)
+    {
+        $opcao = Option::find($id);
+        $categorias = Category::all();
+
+        if (!$opcao) {
+            return redirect()->route('options.index')->with('error', 'Opção não encontrada.');
+        }
+
+        return view('admin.option.option_edit', compact('opcao', 'categorias'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $opcao = Option::find($id);
+
+        if (!$opcao) {
+            return redirect()->route('options.index')->with('error', 'Opção não encontrada.');
+        }
+
+        $opcao->name = $request->input('name');
+        $opcao->category_id = $request->input('category_id');
+        $opcao->save();
+
+        return redirect()->route('options.index')->with('success', 'Opção atualizada com sucesso.');
+    }
 }

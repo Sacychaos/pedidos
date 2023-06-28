@@ -30,6 +30,9 @@
         <tr>
             <td>{{ $setor->name }}</td>
             <td>
+
+                <a href="{{ route('sectors.edit', ['sector' => $setor->id]) }}" class="btn btn-primary">Editar</a>
+
                 <form action="{{ route('sectors.destroy', ['sector' => $setor->id]) }}" method="POST"
                     style="display: inline;">
                     @csrf

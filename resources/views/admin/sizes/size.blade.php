@@ -31,6 +31,9 @@
             <tr>
                 <td>{{ $tamanho->name }}</td>
                 <td>
+
+                    <a href="{{ route('sizes.edit', ['size' => $tamanho->id]) }}" class="btn btn-primary">Editar</a>
+
                     <form action="{{ route('sizes.destroy', ['size' => $tamanho->id]) }}" method="POST"
                         style="display: inline;">
                         @csrf

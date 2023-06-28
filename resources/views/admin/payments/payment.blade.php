@@ -30,6 +30,9 @@
         <tr>
             <td>{{ $pagamento->name }}</td>
             <td>
+
+                <a href="{{ route('payments.edit', ['payment' => $pagamento->id]) }}" class="btn btn-primary">Editar</a>
+
                 <form action="{{ route('payments.destroy', ['payment' => $pagamento->id]) }}" method="POST"
                     style="display: inline;">
                     @csrf

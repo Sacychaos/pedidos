@@ -26,9 +26,37 @@ class SectorController extends Controller
         return view('admin.sector.setor_create', compact('setores'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function edit($id)
+    {
+        $sector = Sector::find($id);
+
+        if (!$sector) {
+            return redirect()->route('sectors.index')->with('error', 'Setor não encontrado.');
+    }
+
+    return view('admin.sector.setor_edit', compact('sector'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        $sector = Sector::find($id);
+
+        if (!$sector) {
+            return redirect()->route('sectors.index')->with('error', 'Setor não encontrado.');
+        }
+
+        $sector->name = $request->input('name');
+        $sector->save();
+
+        return redirect()->route('sectors.index')->with('success', 'Setor atualizado com sucesso.');
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([

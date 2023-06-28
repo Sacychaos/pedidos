@@ -14,9 +14,8 @@
 <body>
     <div>
         <div class="container">
-            <div class="buttonsForm">
-                <div class="btnColor"></div>
-                <button id="btnSignin">Cadastre-se</button>
+            <div class="pt-5">
+                <img src="img\logo_guardiao.png" style="max-width:100%;height:auto;">
             </div>
             <!----------FORMULÁRIO DE LOGIN---------->
             <form id="signin" action="{{ route('login') }}" method="POST">
@@ -25,7 +24,7 @@
 
                 <input type="password" name="password" placeholder="Senha" required />
 
-                <button type="submit">Entrar</button>
+                <button type="submit">Login</button>
             </form>
             @if (session('error'))
             <div class="alert alert-danger text-center mt-3">
