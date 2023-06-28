@@ -39,17 +39,6 @@ class OrderController extends Controller
     {
         try {
 
-            // Verificar se o tamanho foi selecionado
-            if (!$request->has('tamanho_' . $request->input('menu_id'))) {
-                Session::flash('error', 'Selecione um tamanho.');
-                return redirect()->back();
-            }
-
-            // Verificar se o pagamento foi selecionado
-            if (!$request->has('f_pagamento.' . $request->input('menu_id'))) {
-                Session::flash('error', 'Selecione uma forma de pagamento.');
-                return redirect()->back();
-            }
             // Obter o ID do usuário logado
             $userId = Auth::id();
 
@@ -122,15 +111,17 @@ class OrderController extends Controller
 
 
 
-            return redirect()->back()->with('success', true);
+            // Retorna uma resposta de sucesso
+            return response()->json(['message' => 'Pedido feito com sucesso!'], 200);
 
-
+            //return response()->json(['success' => true]);
         } catch (\Exception $e) {
             // Registrar o erro no log
             Log::error($e->getMessage());
-                // Redirecionar de volta à página anterior com mensagem de erro
-            return redirect()->back()->with('error', 'Ocorreu um erro ao cadastrar o pedido. Por favor, tente novamente.');
-        }
+
+            // Retornar uma resposta JSON com o erro
+            return response()->json(['success' => false, 'message' => 'Ocorreu um erro ao cadastrar o pedido. Por favor, tente novamente.'], 500);
+                }
     }
 
 

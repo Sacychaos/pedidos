@@ -166,6 +166,8 @@
     </script>
     @endif
 
+    <script src="{{ asset('js/geral.js') }}"></script>
+
 </body>
 
 </html>
