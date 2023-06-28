@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -38,6 +39,20 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         try {
+
+            // Obter o usuário atualmente autenticado
+            $user = Auth::user();
+
+            // Verificar se o usuário não é um administrador
+            if (!$user->is_admin) {
+                // Verificar se o horário atual é depois das 9:30
+                $deadline = Carbon::createFromTime(9, 30);
+                $now = now();
+                if ($now->greaterThanOrEqualTo($deadline)) {
+                    // Se for depois das 9:30, retornar um erro
+                    return response()->json(['message' => 'Pedidos só podem ser feitos até as 9:30 da manhã. Entre em contato com a Recepção'], 422);
+                }
+            }
 
             // Obter o ID do usuário logado
             $userId = Auth::id();
