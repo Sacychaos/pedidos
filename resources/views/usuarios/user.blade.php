@@ -6,7 +6,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Setor</th>
                 <th scope="col">Ações</th>
@@ -15,7 +14,6 @@
         <tbody>
             @foreach ($users as $user)
             <tr>
-                <th>{{ $user->id }}</th>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->sector->name }}</td>
                 <td>
