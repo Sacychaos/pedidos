@@ -24,6 +24,7 @@
 
             <div class="row">
                 @foreach($categorias as $categoria)
+                @if($categoria->name === 'Opções')
                 <div class="col">
                     <div class="form-group">
                         <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
@@ -40,6 +41,49 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
+                @endforeach
+
+                @foreach($categorias as $categoria)
+                @if($categoria->name === 'Carnes')
+                <div class="col">
+                    <div class="form-group">
+                        <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
+                        @foreach($opcoes as $opcao)
+                        @if($opcao->category_id === $categoria->id)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
+                                value="{{ $opcao->id }}">
+                            <label class="form-check-label" for="{{ $opcao->id }}">
+                                {{ $opcao->name }}
+                            </label>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+                @endforeach
+
+                @foreach($categorias as $categoria)
+                @if($categoria->name === 'Acompanhamentos')
+                <div class="col">
+                    <div class="form-group">
+                        <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
+                        @foreach($opcoes as $opcao)
+                        @if($opcao->category_id === $categoria->id)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
+                                value="{{ $opcao->id }}">
+                            <label class="form-check-label" for="{{ $opcao->id }}">
+                                {{ $opcao->name }}
+                            </label>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                @endif
                 @endforeach
             </div>
             <div class="text-right">

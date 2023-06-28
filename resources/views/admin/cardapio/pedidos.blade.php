@@ -63,7 +63,7 @@
                         </td>
                         <td>{{ $pedido->size->name }}</td>
                         <td>{{ $pedido->payment->name }}</td>
-                        <td>{{ $pedido->has_soda }}</td>
+                        <td>{{ $pedido->soda }}</td>
                         <td>{{ $pedido->change }}</td>
                         <td>{{ $pedido->observations }}</td>
                         <td>

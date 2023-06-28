@@ -21,25 +21,13 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Nome</th>
-            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
         @foreach($categorias as $categoria)
         <tr>
-            <td>{{ $categoria->id }}</td>
             <td>{{ $categoria->name }}</td>
-            <td>
-                <form action="{{ route('categories.destroy', ['category' => $categoria->id]) }}" method="POST"
-                    style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"
-                        onclick="return confirm('Tem certeza que deseja excluir a categoria?')">Deletar</button>
-                </form>
-            </td>
         </tr>
         @endforeach
     </tbody>
