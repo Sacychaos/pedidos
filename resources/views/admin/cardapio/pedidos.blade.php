@@ -21,6 +21,7 @@
                     <tr>
                         <th>Data</th>
                         <th>Usuário</th>
+                        <th>Setor</th>
                         <th>Restaurante</th>
                         <th>Opções</th>
                         <th>Carnes</th>
@@ -39,6 +40,7 @@
                     <tr>
                         <td>{{ \Carbon\Carbon::parse($pedido->date)->format('d/m/Y H:i:s') }}</td>
                         <td>{{ $pedido->user->name }}</td>
+                        <td>{{ $pedido->user->sector->name }}</td>
                         <td>{{ $pedido->menu->restaurant->name }}</td>
                         <td>
                             {{
