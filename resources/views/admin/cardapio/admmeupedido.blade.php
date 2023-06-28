@@ -42,25 +42,31 @@
                         <td>{{ $pedido->created_at->format('d/m/Y H:i:s') }}</td>
                         <td>{{ $pedido->menu->restaurant->name }}</td>
                         <td>
-                            @foreach ($pedido->orderItems as $orderItem)
-                            @if ($orderItem->menuOption->option->category->name == 'Opções')
-                            {{ $orderItem->menuOption->option->name }}
-                            @endif
-                            @endforeach
+                            {{
+                                implode(', ', array_map(function($orderItem) {
+                                    return $orderItem->menuOption->option->name;
+                                }, array_filter($pedido->orderItems->all(), function($orderItem) {
+                                    return $orderItem->menuOption->option->category->name == 'Opções';
+                                })))
+                            }}
                         </td>
                         <td>
-                            @foreach ($pedido->orderItems as $orderItem)
-                            @if ($orderItem->menuOption->option->category->name == 'Carnes')
-                            {{ $orderItem->menuOption->option->name }},
-                            @endif
-                            @endforeach
+                            {{
+                                implode(', ', array_map(function($orderItem) {
+                                    return $orderItem->menuOption->option->name;
+                                }, array_filter($pedido->orderItems->all(), function($orderItem) {
+                                    return $orderItem->menuOption->option->category->name == 'Carnes';
+                                })))
+                            }}
                         </td>
                         <td>
-                            @foreach ($pedido->orderItems as $orderItem)
-                            @if ($orderItem->menuOption->option->category->name == 'Acompanhamentos')
-                            {{ $orderItem->menuOption->option->name }},
-                            @endif
-                            @endforeach
+                            {{
+                                implode(', ', array_map(function($orderItem) {
+                                    return $orderItem->menuOption->option->name;
+                                }, array_filter($pedido->orderItems->all(), function($orderItem) {
+                                    return $orderItem->menuOption->option->category->name == 'Acompanhamentos';
+                                })))
+                            }}
                         </td>
                         <td>{{ $pedido->size->name }}</td>
                         <td>{{ $pedido->payment->name }}</td>
