@@ -13,7 +13,7 @@ class CategoryController extends Controller
 
         // Buscar as categorias existentes, ordenando-as de acordo com a lista de categorias padrão
         $categorias = Category::whereIn('name', $defaultCategories)
-            ->orderByRaw("FIELD(name, '" . implode("','", $defaultCategories) . "')")
+        ->orderByRaw("CASE WHEN name = '" . implode("' THEN 1 WHEN name = '", $defaultCategories) . "' THEN 1 ELSE 0 END")
             ->get();
 
         // Verificar e criar as categorias padrão se não existirem
