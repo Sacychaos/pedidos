@@ -127,7 +127,9 @@ class OrderController extends Controller
 
 
             // Retorna uma resposta de sucesso
-            return response()->json(['message' => 'Pedido feito com sucesso!'], 200);
+            return response()->json([
+                'message' => 'Pedido feito com sucesso! Verifique na aba "Meus Pedidos"'
+            ], 200);
 
             //return response()->json(['success' => true]);
         } catch (\Exception $e) {

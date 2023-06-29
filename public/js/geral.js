@@ -16,13 +16,25 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Array para controlar o estado de envio de cada formulário
+    const formEnvioStatus = [];
+
     // Loop through each form.
     for (let index = 0; index < 100; index++) { // use a higher number here if you expect more than 100 forms.
         const orderForm = document.getElementById(`orderForm${index}`);
         if (!orderForm) break;
 
+        // Inicializa o estado de envio do formulário como "false"
+        formEnvioStatus[index] = false;
+
         orderForm.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            // Verifica se o formulário já foi enviado
+            if (formEnvioStatus[index]) {
+                alert('O pedido já foi enviado. Por favor, aguarde.');
+                return;
+            }
 
             const tamanhoGroup = document.getElementById(`tamanho-group-${index}`);
             const pagamentoGroup = document.getElementById(`pagamento-group-${index}`);
@@ -44,6 +56,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(orderForm);
 
+            // Atualiza o estado de envio do formulário para "true"
+            formEnvioStatus[index] = true;
+
             fetch('/orders', {
                 method: 'POST',
                 body: formData
@@ -61,9 +76,17 @@ window.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 // Pedido processado com sucesso
-                alert(data.message);
+                // Quebrar a mensagem para exibição
+                const messageLines = [
+                    'Pedido feito com sucesso!',
+                    'Verifique a aba "Meus Pedidos"'
+                ];
+                const message = messageLines.join('\n');
+                alert(message);
                 // Limpar o formulário
                 orderForm.reset();
+                // Redefinir o estado de envio do formulário para "false"
+                formEnvioStatus[index] = false;
             })
             .catch(error => {
                 // Se chegarmos aqui, ou houve um erro de rede, ou a resposta do servidor foi um erro (não OK)
@@ -74,6 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     // Caso contrário, é provavelmente um erro de rede
                     console.error('Erro ao enviar o formulário:', error);
                 }
+                // Redefinir o estado de envio do formulário para "false"
+                formEnvioStatus[index] = false;
             });
         });
     }
