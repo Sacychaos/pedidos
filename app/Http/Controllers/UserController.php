@@ -8,27 +8,50 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view('usuarios.user', ['users' => $users]);
+        $query = User::query();
+
+        // Aplicar filtro de setor, se selecionado
+        if ($request->filled('sector')) {
+            $sectorId = $request->input('sector');
+            $query->where('sector_id', $sectorId);
+        }
+
+        // Aplicar filtro de nome, se preenchido
+        if ($request->filled('name')) {
+            $name = $request->input('name');
+            $query->where('name', 'like', '%' . $name . '%');
+        }
+
+        // Ordenar por setor, se selecionado
+        if ($request->filled('sort')) {
+            $sortDirection = $request->input('sort');
+            if ($request->input('sort') === 'asc') {
+                $query->orderBy('name', 'asc');
+            } elseif ($request->input('sort') === 'desc') {
+                $query->orderBy('name', 'desc');
+            }
+        }
+
+        $users = $query->get();
+        $sectors = Sector::all();
+
+        return view('usuarios.user', ['users' => $users, 'sectors' => $sectors]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
+
+
+
     public function create()
     {
         $sectors = Sector::all();
         return view('usuarios.user_create', compact('sectors'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
     $isAdmin = $request->has('is_admin') ? true : false;
@@ -48,18 +71,14 @@ class UserController extends Controller
     return redirect()->back()->with('message', 'Erro ao Criar');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(User $user)
     {
         $sectors = Sector::all();
         return view('usuarios.user_edit', compact('user', 'sectors'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, User $user)
     {
     $data = $request->except(['_token', '_method']);
@@ -82,9 +101,7 @@ class UserController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(User $user)
     {
         $user->delete();

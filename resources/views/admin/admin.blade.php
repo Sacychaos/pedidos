@@ -11,6 +11,8 @@
 
     <title>Admin</title>
 
+    <link href="{{ asset('fonts/fontawesome/all.min.css') }}" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- jQuery -->
@@ -21,6 +23,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+
+
+
 
 
 </head>
@@ -36,7 +41,6 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
                 </div>
                 <img src="{{ asset('img\logo_guardiao.png') }}" style="max-width:100%;height:auto;">
             </a>
@@ -48,21 +52,20 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('pedidos.index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pedidos dos Usuários</span>
                 </a>
             </li>
 
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('pedidoadm') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+
                     <span>Fazer um Pedido</span>
                 </a>
             </li>
 
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('meuspedidosadm') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+
                     <span>Meus Pedidos</span>
                 </a>
             </li>
@@ -79,7 +82,6 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('menus.index') }}">
-                    <i class=""></i>
                     <span>Cardápio do Dia</span>
                 </a>
 
@@ -87,7 +89,6 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('restaurants.index') }}">
-                    <i class=""></i>
                     <span>Restaurantes</span>
                 </a>
 
@@ -96,28 +97,24 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('options.index') }}">
-                    <i class=""></i>
                     <span>Cardápio Geral</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('categories.index') }}">
-                    <i class=""></i>
                     <span>Categoria</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('sizes.index') }}">
-                    <i class=""></i>
                     <span>Tam. Marmitas</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('payments.index') }}">
-                    <i class=""></i>
                     <span>Pagamentos</span>
                 </a>
             </li>
@@ -133,7 +130,6 @@
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('users.create') }}">
-                    <i class=""></i>
                     <span>Novo Usuário</span>
                 </a>
             </li>
@@ -141,13 +137,11 @@
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="/users">
-                    <i class=""></i>
                     <span>Usuários</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('sectors.index') }}">
-                    <i class="fas fa-fw"></i>
                     <span>Setores</span>
                 </a>
             </li>

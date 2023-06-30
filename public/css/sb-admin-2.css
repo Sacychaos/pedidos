@@ -9553,6 +9553,11 @@ button.bg-dark:focus {
   }
 }
 
+.link-no-style {
+    text-decoration: none;
+    color: inherit;
+}
+
 .text-lowercase {
   text-transform: lowercase !important;
 }
