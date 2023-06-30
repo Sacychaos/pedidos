@@ -42,7 +42,8 @@
                     <i class="fas fa-sort-down"></i>
                     @endif
                 </th>
-
+                <th scope="col">Data de Criação</th>
+                <th scope="col">Última Atualização</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -51,6 +52,8 @@
             <tr>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->sector->name }}</td>
+                <td>{{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y H:i:s') }}</td>
+                <td>{{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/Y H:i:s') }}</td>
                 <td>
                     <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-primary">Editar</a>
 
