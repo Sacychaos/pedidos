@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-<div>
+<div class="mx-4">
     <h1>Cadastro de Tamanho das Marmitas</h1>
 
     <form action="{{ route('sizes.store') }}" method="POST">

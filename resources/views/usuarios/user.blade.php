@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="table-responsive">
+<div class="table-responsive mx-4">
     <table class="table">
         <thead>
             <tr>

@@ -1,48 +1,50 @@
 @extends('admin.admin')
 
 @section('content')
-<h1>Cadastrar Setor</h1>
+<div class="mx-4">
+    <h1>Cadastrar Setor</h1>
 
-<form action="{{ route('sectors.store') }}" method="POST">
-    @csrf
+    <form action="{{ route('sectors.store') }}" method="POST">
+        @csrf
 
-    <div class="form-group">
-        <label for="nome">Nome do Setor</label>
-        <input type="text" class="form-control" id="nome" name="name" placeholder="Ex: Atendimento">
-    </div>
+        <div class="form-group">
+            <label for="nome">Nome do Setor</label>
+            <input type="text" class="form-control" id="nome" name="name" placeholder="Ex: Atendimento">
+        </div>
 
-    <div class="text-right">
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </div>
-</form>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+    </form>
 
-<h1>Setores Cadastrados</h1>
+    <h1>Setores Cadastrados</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nome do Setor</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($setores as $setor)
-        <tr>
-            <td>{{ $setor->name }}</td>
-            <td>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome do Setor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($setores as $setor)
+            <tr>
+                <td>{{ $setor->name }}</td>
+                <td>
 
-                <a href="{{ route('sectors.edit', ['sector' => $setor->id]) }}" class="btn btn-primary">Editar</a>
+                    <a href="{{ route('sectors.edit', ['sector' => $setor->id]) }}" class="btn btn-primary">Editar</a>
 
-                <form action="{{ route('sectors.destroy', ['sector' => $setor->id]) }}" method="POST"
-                    style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"
-                        onclick="return confirm('Tem certeza que deseja excluir o setor?')">Deletar</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+                    <form action="{{ route('sectors.destroy', ['sector' => $setor->id]) }}" method="POST"
+                        style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Tem certeza que deseja excluir o setor?')">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 @endsection

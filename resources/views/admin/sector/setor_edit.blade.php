@@ -2,21 +2,25 @@
 
 @section('content')
 
-<h1>Editar Setor</h1>
+<div class="mx-4">
 
-<form action="{{ route('sectors.update', ['sector' => $sector->id]) }}" method="POST">
-    @csrf
-    @method('PUT')
+    <h1>Editar Setor</h1>
 
-    <div class="form-group">
-        <label for="nome">Nome do Setor</label>
-        <input type="text" class="form-control" id="nome" name="name" value="{{ $sector->name }}"
-            placeholder="Ex: Atendimento">
-    </div>
+    <form action="{{ route('sectors.update', ['sector' => $sector->id]) }}" method="POST">
+        @csrf
+        @method('PUT')
 
-    <div class="text-right">
-        <button type="submit" class="btn btn-primary">Atualizar</button>
-    </div>
-</form>
+        <div class="form-group">
+            <label for="nome">Nome do Setor</label>
+            <input type="text" class="form-control" id="nome" name="name" value="{{ $sector->name }}"
+                placeholder="Ex: Atendimento">
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        </div>
+    </form>
+
+</div>
 
 @endsection

@@ -1,14 +1,14 @@
 @extends('admin.admin')
 
 @section('content')
-<div class="card">
+<div class="card mx-4">
     <div class="card-header bg-light text-center">
         <h6 class="m-0 font-weight-bold text-primary">Pedidos do Dia</h6>
     </div>
     <div class="card-body">
         <form method="GET" action="{{ route('pedidos.index') }}">
             <div class="form-group">
-                <label for="data">Escolha a Data:</label>
+                <label for="data">Procure por Data:</label>
                 <input type="date" name="data" id="data" class="form-control" required value="{{ date('Y-m-d') }}">
             </div>
             <button type="submit" class="btn btn-primary mb-2 float-right">Buscar Pedidos</button>
@@ -88,7 +88,7 @@
             </table>
         </div>
         @else
-        <p>Nenhum pedido feito hoje.</p>
+        <p>Nenhum pedido feito neste dia.</p>
         @endif
     </div>
 </div>

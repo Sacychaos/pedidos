@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div>
+<div class="mx-4">
     <div class="usercreate">
 
         <form id="signup" action="{{ route('users.store') }}" method="post">

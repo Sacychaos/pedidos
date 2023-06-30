@@ -31,7 +31,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-cinza sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
@@ -42,7 +42,7 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+
 
 
             <!-- Nav Item - Dashboard -->
@@ -142,7 +142,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/users">
                     <i class=""></i>
-                    <span>Editar Usuário</span></a>
+                    <span>Usuários</span></a>
             </li>
 
             <li class="nav-item">
@@ -162,16 +162,16 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-cinza topbar mb-4 static-top shadow">
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow d-flex align-items-center">
-                            <span class="mr-2 d-none d-sm-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                            <span class="mr-2 d-none d-sm-inline text-white small">{{ Auth::user()->name }}</span>
 
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"
+                            <a class="nav-link dropdown-toggle text-white small" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Sair
                             </a>
@@ -186,15 +186,12 @@
                 <!-- End of Topbar -->
 
                 <!-- Início do Conteúdo da Página -->
+
                 <div>
-                    <div id="page-content-wrapper" class="mx-4">
-                        <!-- Aqui o conteúdo dinâmico das páginas do CRUD será carregado -->
-                        @yield('content')
-                    </div>
+                    <!-- Aqui o conteúdo dinâmico das páginas será carregado -->
+                    @yield('content')
                 </div>
-
             </div>
-
         </div>
     </div>
 

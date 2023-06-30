@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('content')
-<div class="card">
+<div class="card mx-4">
     <div class="card-header bg-light text-center">
         <h6 class="m-0 font-weight-bold text-primary">Meus Pedidos</h6>
     </div>
@@ -9,11 +9,11 @@
         <form method="GET" action="{{ route('meuspedidos') }}">
             @csrf
             <div class="form-group">
-                <label for="data">Escolha a Data:</label>
+                <label for="data">Procure por Data:</label>
                 <input type="date" name="data" id="data" class="form-control" required value="{{ date('Y-m-d') }}">
 
             </div>
-            <button type="submit" class="btn btn-primary mb-2 float-right">Buscar Pedidos</button>
+            <button type="submit" class="btn btn-primary bg-cinza mb-2 float-right">Procurar Pedidos</button>
         </form>
         @if ($pedidos->count() > 0)
         <div class="table-responsive">
@@ -78,7 +78,7 @@
             </table>
         </div>
         @else
-        <p>Nenhum pedido feito.</p>
+        <p>Nenhum pedido feito neste dia.</p>
         @endif
     </div>
 </div>

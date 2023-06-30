@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-<div>
+<div class="mx-4">
     <h1>Editar Tamanho</h1>
 
     <form action="{{ route('sizes.update', ['size' => $tamanho->id]) }}" method="POST">

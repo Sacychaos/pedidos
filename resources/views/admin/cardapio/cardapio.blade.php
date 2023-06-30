@@ -1,9 +1,9 @@
 @extends('admin.admin')
 
 @section('content')
-<h1>Cadastrar Cardápio do Dia</h1>
+<h1 class="card mx-4 text-center">Cadastrar Cardápio do Dia</h1>
 
-<div class="card">
+<div class="card mx-4">
 
     <div class="card-body" id="pedidoform">
         <form action="{{ route('menus.store') }}" method="POST">
@@ -91,7 +91,14 @@
             </div>
         </form>
 
-        <hr class="sidebar-divider">
+    </div>
+</div>
+
+<br>
+
+<div class="card mx-4">
+
+    <div class="card-body" id="pedidoform">
 
         <div>
             <h2>Cardápios Cadastrados:</h2>
@@ -141,4 +148,5 @@
         @endif
     </div>
 </div>
+
 @endsection

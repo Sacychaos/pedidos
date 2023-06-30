@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-<div class="card">
+<div class="card mx-4">
     <div class="card-header bg-light text-center">
         <h6 class="m-0 font-weight-bold text-primary">Meus Pedidos</h6>
     </div>
@@ -9,7 +9,7 @@
         <form method="GET" action="{{ route('pedidos.index') }}">
             @csrf
             <div class="form-group">
-                <label for="data">Escolha a Data:</label>
+                <label for="data">Procure por Data:</label>
                 <input type="date" name="data" id="data" class="form-control" required value="{{ date('Y-m-d') }}">
 
             </div>
@@ -80,7 +80,7 @@
             </table>
         </div>
         @else
-        <p>Nenhum pedido feito.</p>
+        <p>Nenhum pedido feito neste dia.</p>
         @endif
     </div>
 </div>
