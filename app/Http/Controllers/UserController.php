@@ -11,31 +11,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $query = User::query();
-
-        // Aplicar filtro de setor, se selecionado
-        if ($request->filled('sector')) {
-            $sectorId = $request->input('sector');
-            $query->where('sector_id', $sectorId);
-        }
-
-        // Aplicar filtro de nome, se preenchido
-        if ($request->filled('name')) {
-            $name = $request->input('name');
-            $query->where('name', 'like', '%' . $name . '%');
-        }
-
-        // Ordenar por setor, se selecionado
-        if ($request->filled('sort')) {
-            $sortDirection = $request->input('sort');
-            if ($request->input('sort') === 'asc') {
-                $query->orderBy('name', 'asc');
-            } elseif ($request->input('sort') === 'desc') {
-                $query->orderBy('name', 'desc');
-            }
-        }
-
-        $users = $query->get();
+        $users = User::all();
         $sectors = Sector::all();
 
         return view('usuarios.user', ['users' => $users, 'sectors' => $sectors]);

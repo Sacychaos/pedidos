@@ -22,6 +22,11 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 
+    <!-- Data Tables-->
+    <script src="{{ asset('js/datatables.js') }}"></script>
+    <link href="{{ asset('css/datatables.css') }}" rel="stylesheet">
+
+
 
 
 
@@ -195,6 +200,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/geral.js') }}"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('.table').DataTable();
+    });
+    </script>
 
 </body>
 

@@ -1,47 +1,12 @@
 @extends('admin.admin')
 
 @section('content')
-<div class="table-responsive mx-4">
-    <div class="mb-4">
-        <form action="{{ route('users.index') }}" method="GET" class="form-inline">
-            <div class="form-group mr-2">
-                <label for="sector">Setor:</label>
-                <select name="sector" id="sector" class="form-control">
-                    <option value="">Todos</option>
-                    @foreach ($sectors as $sector)
-                    <option value="{{ $sector->id }}">{{ $sector->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group mr-2">
-                <label for="name">Nome:</label>
-                <input type="text" name="name" id="name" class="form-control">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Filtrar</button>
-        </form>
-    </div>
-
-    <table class="table">
+<div class="mx-4">
+    <table class="table dataTable">
         <thead>
             <tr>
-                <th scope="col">Nome
-                    @if (Request::input('sort') === 'asc' && Request::input('sort') !== null)
-                    <i class="fas fa-sort-up"></i>
-                    @endif
-                    @if (Request::input('sort') === 'desc' && Request::input('sort') !== null)
-                    <i class="fas fa-sort-down"></i>
-                    @endif
-                </th>
-                <th scope="col">Setor
-                    @if (Request::input('sort') === 'asc' && Request::input('sort') !== null)
-                    <i class="fas fa-sort-up"></i>
-                    @endif
-                    @if (Request::input('sort') === 'desc' && Request::input('sort') !== null)
-                    <i class="fas fa-sort-down"></i>
-                    @endif
-                </th>
+                <th scope="col">Nome</th>
+                <th scope="col">Setor</th>
                 <th scope="col">Data de Criação</th>
                 <th scope="col">Última Atualização</th>
                 <th scope="col">Ações</th>
