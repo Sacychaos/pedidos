@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link href="{{ asset('icons/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/icons/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>
