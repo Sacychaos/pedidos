@@ -26,11 +26,6 @@
     <script src="{{ asset('js/datatables.js') }}"></script>
     <link href="{{ asset('css/datatables.css') }}" rel="stylesheet">
 
-
-
-
-
-
 </head>
 
 <body id="page-top">
@@ -47,10 +42,6 @@
                 </div>
                 <img src="{{ asset('img\logo_guardiao.png') }}" style="max-width:100%;height:auto;">
             </a>
-
-            <!-- Divider -->
-
-
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
