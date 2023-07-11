@@ -9,9 +9,9 @@
         <form method="GET" action="{{ route('pedidos.index') }}">
             <div class="form-group">
                 <label for="data">Procure por Data:</label>
-                <input type="date" name="data" id="data" class="form-control" required value="{{ date('Y-m-d') }}">
+                <input type="date" name="data" id="data" class="form-control" required
+                    value="{{ old('data', date('Y-m-d')) }}">
             </div>
-            <button type="submit" class="btn btn-primary mb-2 float-right">Buscar Pedidos</button>
         </form>
 
         @if ($pedidos->count() > 0)
@@ -140,4 +140,18 @@
 
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecione o campo de data
+    var dataInput = document.querySelector('#data');
+
+    // Adicione um ouvinte de evento de mudança ao campo de data
+    dataInput.addEventListener('change', function() {
+        // Submeta o formulário quando a data for alterada
+        this.form.submit();
+    });
+});
+</script>
+
 @endsection
