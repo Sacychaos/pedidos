@@ -8,6 +8,7 @@ use App\Models\MenuOption;
 use App\Models\OrderItem;
 use App\Models\Size;
 use App\Models\Payment;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -140,6 +141,34 @@ class OrderController extends Controller
             return response()->json(['success' => false, 'message' => 'Ocorreu um erro ao cadastrar o pedido. Por favor, tente novamente.'], 500);
                 }
     }
+
+
+
+
+    public function createWhatsAppMessage($restaurantId)
+    {
+        $restaurant = Restaurant::find($restaurantId);
+        $orders = Order::whereHas('menu.restaurant', function ($query) use ($restaurantId) {
+            $query->where('id', $restaurantId);
+        })->get();
+
+        $message = "Pedidos do Restaurante: {$restaurant->name}" . PHP_EOL . PHP_EOL;
+
+        foreach ($orders as $order) {
+            $message .= "Pedido ID: {$order->id}" . PHP_EOL;
+            $message .= "Usuário: {$order->user->name}" . PHP_EOL;
+            $message .= "Soda: {$order->soda}" . PHP_EOL;
+            $message .= "Troco: {$order->change}" . PHP_EOL;
+            $message .= "Observações: {$order->observations}" . PHP_EOL;
+            $message .= "Tamanho: {$order->size->name}" . PHP_EOL;
+            $message .= "Pagamento: {$order->payment->name}" . PHP_EOL . PHP_EOL;
+        }
+
+        $whatsAppUrl = 'https://api.whatsapp.com/send?text=' . urlencode($message);
+
+        return redirect($whatsAppUrl);
+    }
+
 
 
 }

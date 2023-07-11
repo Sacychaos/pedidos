@@ -13,6 +13,9 @@
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="{{ asset('icons/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>
 
@@ -55,7 +58,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('meuspedidos') }}">
-                    <i class=""></i>
+                    <i class="bi bi-card-checklist"></i>
                     <span>Meus Pedidos</span>
                 </a>
             </li>
@@ -76,6 +79,7 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-sm-inline text-white small">{{ Auth::user()->name }}</span>
+                                <i class="bi bi-person-circle"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

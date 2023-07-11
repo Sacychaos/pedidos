@@ -90,6 +90,54 @@
         @else
         <p>Nenhum pedido feito neste dia.</p>
         @endif
+
+        <!-- Adicione os botões do WhatsApp para cada restaurante -->
+        @foreach ($pedidos->groupBy('menu.restaurant.id') as $restaurantOrders)
+        @php
+        $restaurant = $restaurantOrders->first()->menu->restaurant;
+        $whatsAppNumber = preg_replace('/\D/', '', $restaurant->phone);
+        $whatsAppMessage = '';
+        foreach ($restaurantOrders as $order) {
+        $whatsAppMessage .= "Nome: " . $order->user->name . PHP_EOL;
+
+        // Acessar as opções selecionadas do pedido
+        $selectedOptions = $order->orderItems->pluck('menuOption.option.name')->toArray();
+        if (!empty($selectedOptions)) {
+        $whatsAppMessage .= "Opções: " . implode(', ', $selectedOptions) . PHP_EOL;
+        }
+
+        if (!empty($order->size->name)) {
+        $whatsAppMessage .= "Tamanho: " . $order->size->name . PHP_EOL;
+        }
+
+        if (!empty($order->payment->name)) {
+        $whatsAppMessage .= "Pagamento: " . $order->payment->name . PHP_EOL;
+        }
+
+        if (!empty($order->soda)) {
+        $whatsAppMessage .= "Refrigerante: " . $order->soda . PHP_EOL;
+        }
+
+        if (!empty($order->change)) {
+        $whatsAppMessage .= "Troco Para: " . $order->change . PHP_EOL;
+        }
+
+        if (!empty($order->observations)) {
+        $whatsAppMessage .= "Observações: " . $order->observations . PHP_EOL;
+        }
+
+        $whatsAppMessage .= PHP_EOL;
+        }
+        $whatsAppUrl = 'https://wa.me/' . $whatsAppNumber . '?text=' . urlencode($whatsAppMessage);
+        @endphp
+        <a href="{{ $whatsAppUrl }}" class="btn btn-sm btn-success mb-2 float-center left" target="_blank"><i
+                class="bi bi-whatsapp"></i> {{ $restaurant->name }}</a>
+        @endforeach
+
+
+
+
+
     </div>
 </div>
 @endsection

@@ -13,6 +13,9 @@
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="{{ asset('icons/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>
 
@@ -76,6 +79,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('menus.index') }}">
+                    <i class="bi bi-card-checklist"></i>
                     <span>Cardápio do Dia</span>
                 </a>
 
@@ -83,6 +87,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('restaurants.index') }}">
+                    <i class="bi bi-shop"></i>
                     <span>Restaurantes</span>
                 </a>
 
@@ -91,24 +96,28 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('options.index') }}">
+                    <i class="bi bi-list-task"></i>
                     <span>Cardápio Geral</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('categories.index') }}">
+                    <i class="bi bi-bookmark-check"></i>
                     <span>Categoria</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('sizes.index') }}">
+                    <i class="bi bi-aspect-ratio"></i>
                     <span>Tam. Marmitas</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('payments.index') }}">
+                    <i class="bi bi-credit-card-2-back"></i>
                     <span>Pagamentos</span>
                 </a>
             </li>
@@ -124,6 +133,7 @@
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('users.create') }}">
+                    <i class="bi bi-person-plus"></i>
                     <span>Novo Usuário</span>
                 </a>
             </li>
@@ -131,11 +141,13 @@
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="/users">
+                    <i class="bi bi-person"></i>
                     <span>Usuários</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('sectors.index') }}">
+                    <i class="bi bi-diagram-3"></i>
                     <span>Setores</span>
                 </a>
             </li>
@@ -159,6 +171,7 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-sm-inline text-white small">{{ Auth::user()->name }}</span>
+                                <i class="bi bi-person-circle"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -35,7 +35,7 @@ Route::get('/meuspedidos', [PedidoController::class, 'meuspedidos'])->name('meus
 // Rotas CARDÁPIO DO DIA DA PÁGINA DO USUÁRIO
 Route::resource('orders', OrderController::class);
 
-// Rotas protegidas para administradores
+// -----------------Rotas protegidas para administradores
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     // Rotas CRUD Usuários
     Route::resource('users', UserController::class);
@@ -76,4 +76,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     // MEUS PEDIDO ADM
     Route::get('/meuspedidosadm', [PedidoController::class, 'meuspedidosadm'])->name('meuspedidosadm');
+
+    Route::get('/orders/whatsapp/{restaurantId}', [OrderController::class, 'createWhatsAppMessage'])->name('orders.whatsapp');
+
+
 });
