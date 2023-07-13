@@ -98,7 +98,7 @@
         $whatsAppNumber = preg_replace('/\D/', '', $restaurant->phone);
         $whatsAppMessage = '';
         foreach ($restaurantOrders as $order) {
-        $whatsAppMessage .= "Nome: " . $order->user->name . PHP_EOL;
+        $whatsAppMessage .= "Nome: " . '*' . $order->user->name . '*' . PHP_EOL;
 
         // Acessar as opções selecionadas do pedido
         $selectedOptions = $order->orderItems->pluck('menuOption.option.name')->toArray();
