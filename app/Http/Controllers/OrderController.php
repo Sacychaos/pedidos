@@ -8,6 +8,7 @@ use App\Models\MenuOption;
 use App\Models\OrderItem;
 use App\Models\Size;
 use App\Models\Payment;
+use App\Models\Price;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,8 +24,9 @@ class OrderController extends Controller
         $opcoesMenu = MenuOption::whereIn('menu_id', $cardapios->pluck('id'))->get();
         $tamanhos = Size::all();
         $pagamentos = Payment::all();
+        $prices = Price::all();
 
-        return view('pedidos.cardapiodia', compact('cardapios', 'opcoesMenu', 'tamanhos', 'pagamentos'));
+        return view('pedidos.cardapiodia', compact('cardapios', 'opcoesMenu', 'tamanhos', 'pagamentos', 'prices'));
     }
     public function admindex()
     {
@@ -32,8 +34,9 @@ class OrderController extends Controller
         $opcoesMenu = MenuOption::whereIn('menu_id', $cardapios->pluck('id'))->get();
         $tamanhos = Size::all();
         $pagamentos = Payment::all();
+        $prices = Price::all();
 
-        return view('pedidos.admcardapiodia', compact('cardapios', 'opcoesMenu', 'tamanhos', 'pagamentos'));
+        return view('pedidos.admcardapiodia', compact('cardapios', 'opcoesMenu', 'tamanhos', 'pagamentos', 'prices'));
     }
 
 

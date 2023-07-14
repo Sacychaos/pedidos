@@ -110,7 +110,7 @@ CREATE TABLE order_items (
 );
 
 CREATE TABLE prices (
-  price_id SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   restaurant_id INT,
   size_id INT,
   price DECIMAL(10,2),

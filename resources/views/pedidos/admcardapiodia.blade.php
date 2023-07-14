@@ -129,11 +129,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 text-right">
-                        <button type="submit" class="btn btn-primary bg-cinza">Fazer Pedido</button>
+
+
+                <div class="col-12 shadow p-3 mb-5 bg-white rounded">
+                    <div class="text-left small">
+                        <label class="font-weight-bold">Valores</label><br>
+                        @foreach ($prices as $price)
+                        @if ($price->restaurant_id == $cardapio->restaurant->id)
+                        {{ $price->size->name }} - R$ {{ $price->price }}<br>
+                        @endif
+                        @endforeach
                     </div>
                 </div>
+                <div class="col-12 text-right">
+                    <button type="submit" class="btn btn-primary bg-cinza">Fazer Pedido</button>
+                </div>
+
             </div>
         </form>
     </div>
