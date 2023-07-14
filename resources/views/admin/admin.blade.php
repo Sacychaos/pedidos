@@ -116,6 +116,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('prices.index') }}">
+                    <i class="bi bi-cash-coin"></i>
+                    <span>Preço Marmitas</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('payments.index') }}">
                     <i class="bi bi-credit-card-2-back"></i>
                     <span>Pagamentos</span>

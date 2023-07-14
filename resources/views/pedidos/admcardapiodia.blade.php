@@ -111,19 +111,21 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="font-weight-bold">Refrigerante</label>
-                            <input type="text" class="form-control" name="f_refrigerante[{{ $cardapio->id }}]">
+                            <input type="text" class="form-control" maxlength="25"
+                                name="f_refrigerante[{{ $cardapio->id }}]">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="font-weight-bold">Troco Para</label>
-                            <input type="text" class="form-control campo-numerico" name="f_troco[{{ $cardapio->id }}]">
+                            <input type="text" class="form-control campo-numerico" maxlength="6"
+                                name="f_troco[{{ $cardapio->id }}]">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="font-weight-bold">Observações</label>
-                            <input type="text" class="form-control" name="f_obs[{{ $cardapio->id }}]">
+                            <input type="text" class="form-control" maxlength="50" name="f_obs[{{ $cardapio->id }}]">
                         </div>
                     </div>
                 </div>
@@ -149,5 +151,7 @@
     <p class="lead">Por favor, verifique novamente mais tarde.</p>
 </div>
 @endif
+
+
 
 @endsection

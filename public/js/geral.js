@@ -11,10 +11,18 @@ function validarNumericoo(input) {
 window.addEventListener('DOMContentLoaded', () => {
     const campoNumericoInputs = document.querySelectorAll('.campo-numerico');
     campoNumericoInputs.forEach((input) => {
-        input.addEventListener('input', () => {
-            input.value = input.value.replace(/\D/g, '');
-        });
+    input.addEventListener('input', () => {
+        input.value = input.value
+        .replace(/[^\d.,]/g, '') // Remove caracteres não numéricos, exceto ".", ",".
+        .replace(',', '.'); // Substitui a "," por ".".
+
+        // Lógica extra para tratar múltiplas ocorrências de "." ou ",".
+        const parts = input.value.split('.');
+        if (parts.length > 2) {
+        input.value = parts.slice(0, -1).join('') + '.' + parts.slice(-1);
+        }
     });
+});
 
     // Array para controlar o estado de envio de cada formulário
     const formEnvioStatus = [];

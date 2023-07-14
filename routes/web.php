@@ -10,6 +10,7 @@ use App\Http\Controllers\OptionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\SizeController;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,9 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     // Rotas OPÇÕES CARDÁPIO GERAL
     Route::resource('options', OptionController::class);
+
+    // Rotas PREÇOS TAMANHO DAS MARMITAS
+    Route::resource('prices', PriceController::class);
 
     // Rotas OPÇÕES CADASTRO CARDÁPIO DO DIA
     Route::resource('menus', MenuController::class);

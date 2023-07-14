@@ -7,14 +7,15 @@
     </div>
     <div class="card-body">
         <form method="GET" action="{{ route('meuspedidos') }}">
-            @csrf
             <div class="form-group">
                 <label for="data">Procure por Data:</label>
-                <input type="date" name="data" id="data" class="form-control" required value="{{ date('Y-m-d') }}">
-
+                <div class="input-group">
+                    <input type="date" name="data" id="data" class="form-control col-md-3" required
+                        value="{{ old('data', $selectedDate) }}">
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary bg-cinza mb-2 float-right">Procurar Pedidos</button>
         </form>
+
         @if ($pedidos->count() > 0)
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -82,4 +83,24 @@
         @endif
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecione o campo de data
+    var dataInput = document.querySelector('#data');
+
+    // Obtenha o valor selecionado inicialmente (data atual)
+    var selectedDate = dataInput.value;
+
+    // Atribua o valor selecionado como atributo "value" do campo de data
+    dataInput.setAttribute('value', selectedDate);
+
+    // Adicione um ouvinte de evento de mudança ao campo de data
+    dataInput.addEventListener('change', function() {
+        // Submeta o formulário quando a data for alterada
+        this.form.submit();
+    });
+});
+</script>
+
 @endsection

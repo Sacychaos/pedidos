@@ -9,8 +9,10 @@
         <form method="GET" action="{{ route('pedidos.index') }}">
             <div class="form-group">
                 <label for="data">Procure por Data:</label>
-                <input type="date" name="data" id="data" class="form-control" required
-                    value="{{ old('data', date('Y-m-d')) }}">
+                <div class="input-group">
+                    <input type="date" name="data" id="data" class="form-control col-md-3" required
+                        value="{{ old('data', $selectedDate) }}">
+                </div>
             </div>
         </form>
 
@@ -145,6 +147,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Selecione o campo de data
     var dataInput = document.querySelector('#data');
+
+    // Obtenha o valor selecionado inicialmente (data atual)
+    var selectedDate = dataInput.value;
+
+    // Atribua o valor selecionado como atributo "value" do campo de data
+    dataInput.setAttribute('value', selectedDate);
 
     // Adicione um ouvinte de evento de mudança ao campo de data
     dataInput.addEventListener('change', function() {

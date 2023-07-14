@@ -18,7 +18,10 @@ class PedidoController extends Controller
         // Obter os pedidos da data selecionada
         $pedidos = Order::whereDate('created_at', $data)->get();
 
-        return view('admin.cardapio.pedidos', compact('pedidos'));
+        // Definir a data selecionada como valor padrão para o campo de data
+        $selectedDate = $dataPedido;
+
+        return view('admin.cardapio.pedidos', compact('pedidos', 'selectedDate'));
     }
 
 
@@ -36,7 +39,10 @@ class PedidoController extends Controller
                         ->whereDate('created_at', $dataPedido)
                         ->get();
 
-        return view('admin.cardapio.meupedido', compact('pedidos'));
+        // Definir a data selecionada como valor padrão para o campo de data
+        $selectedDate = $dataPedido;
+
+        return view('admin.cardapio.meupedido', compact('pedidos', 'selectedDate'));
     }
 
 
@@ -53,7 +59,10 @@ class PedidoController extends Controller
                         ->whereDate('created_at', $dataPedido)
                         ->get();
 
-        return view('admin.cardapio.admmeupedido', compact('pedidos'));
+        // Definir a data selecionada como valor padrão para o campo de data
+        $selectedDate = $dataPedido;
+
+        return view('admin.cardapio.admmeupedido', compact('pedidos', 'selectedDate'));
     }
 
     public function destroy($id)
