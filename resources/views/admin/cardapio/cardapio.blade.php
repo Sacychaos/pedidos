@@ -23,67 +23,73 @@
             </div>
 
             <div class="row">
+                {{-- Loop para a categoria "Opções" --}}
                 @foreach($categorias as $categoria)
-                @if($categoria->name === 'Opções')
-                <div class="col">
-                    <div class="form-group">
-                        <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
-                        @foreach($opcoes as $opcao)
-                        @if($opcao->category_id === $categoria->id)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
-                                value="{{ $opcao->id }}">
-                            <label class="form-check-label" for="{{ $opcao->id }}">
-                                {{ $opcao->name }}
-                            </label>
+                    @if($categoria->name === 'Opções')
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
+                                <input type="text" id="search_{{ $categoria->name }}" class="form-control" placeholder="Pesquisar...">
+                                <div class="options-list">
+                                    @foreach($opcoes->where('category_id', $categoria->id)->sortBy('name') as $opcao)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
+                                                value="{{ $opcao->id }}">
+                                            <label class="form-check-label" for="{{ $opcao->id }}">
+                                                {{ $opcao->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                        @endif
-                        @endforeach
-                    </div>
-                </div>
-                @endif
+                    @endif
                 @endforeach
 
+                {{-- Loop para a categoria "Carnes" --}}
                 @foreach($categorias as $categoria)
-                @if($categoria->name === 'Carnes')
-                <div class="col">
-                    <div class="form-group">
-                        <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
-                        @foreach($opcoes as $opcao)
-                        @if($opcao->category_id === $categoria->id)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
-                                value="{{ $opcao->id }}">
-                            <label class="form-check-label" for="{{ $opcao->id }}">
-                                {{ $opcao->name }}
-                            </label>
+                    @if($categoria->name === 'Carnes')
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
+                                <input type="text" id="search_{{ $categoria->name }}" class="form-control" placeholder="Pesquisar...">
+                                <div class="options-list">
+                                    @foreach($opcoes->where('category_id', $categoria->id)->sortBy('name') as $opcao)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
+                                                value="{{ $opcao->id }}">
+                                            <label class="form-check-label" for="{{ $opcao->id }}">
+                                                {{ $opcao->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                        @endif
-                        @endforeach
-                    </div>
-                </div>
-                @endif
+                    @endif
                 @endforeach
 
+                {{-- Loop para a categoria "Acompanhamentos" --}}
                 @foreach($categorias as $categoria)
-                @if($categoria->name === 'Acompanhamentos')
-                <div class="col">
-                    <div class="form-group">
-                        <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
-                        @foreach($opcoes as $opcao)
-                        @if($opcao->category_id === $categoria->id)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
-                                value="{{ $opcao->id }}">
-                            <label class="form-check-label" for="{{ $opcao->id }}">
-                                {{ $opcao->name }}
-                            </label>
+                    @if($categoria->name === 'Acompanhamentos')
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="f_{{ $categoria->name }}" class="font-weight-bold">{{ $categoria->name }}</label>
+                                <input type="text" id="search_{{ $categoria->name }}" class="form-control" placeholder="Pesquisar...">
+                                <div class="options-list">
+                                    @foreach($opcoes->where('category_id', $categoria->id)->sortBy('name') as $opcao)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="opcoes[]" id="{{ $opcao->id }}"
+                                                value="{{ $opcao->id }}">
+                                            <label class="form-check-label" for="{{ $opcao->id }}">
+                                                {{ $opcao->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                        @endif
-                        @endforeach
-                    </div>
-                </div>
-                @endif
+                    @endif
                 @endforeach
             </div>
             <div class="text-right">
@@ -148,5 +154,31 @@
         @endif
     </div>
 </div>
+
+<script>
+    // Adicione o seguinte código JavaScript para lidar com a pesquisa em cada coluna.
+    document.addEventListener("DOMContentLoaded", function() {
+        // Seleciona todas as caixas de pesquisa
+        const searchInputs = document.querySelectorAll('[id^="search_"]');
+
+        // Adiciona um evento de input a cada caixa de pesquisa
+        searchInputs.forEach(function(input) {
+            input.addEventListener("input", function() {
+                const searchTerm = this.value.toLowerCase();
+                const optionsList = this.closest('.form-group').querySelector('.options-list');
+
+                // Filtra os itens com base no valor da caixa de pesquisa
+                optionsList.querySelectorAll('.form-check').forEach(function(option) {
+                    const label = option.querySelector('.form-check-label').textContent.toLowerCase();
+                    if (label.includes(searchTerm)) {
+                        option.style.display = "block";
+                    } else {
+                        option.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>
 
 @endsection
