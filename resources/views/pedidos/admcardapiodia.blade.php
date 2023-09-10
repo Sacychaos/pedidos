@@ -7,7 +7,7 @@
 @foreach ($cardapios as $index => $cardapio)
 <div class="card mx-4" style="box-shadow: 0 0 20px 0 rgb(136, 136, 136)">
     <div class="card-header bg-cinza2 text-center">
-        <h6 class="m-0 font-weight-bold text-primary">{{ $cardapio->restaurant->name }}</h6>
+        <h6 class="m-0 font-weight-bold text-primary">{{ $cardapio->restaurant ? $cardapio->restaurant->name : 'Nome indisponível' }}</h6>
     </div>
     <div class="card-body bg-light">
         <form method="POST" id="orderForm{{ $index }}">
@@ -135,8 +135,8 @@
                     <div class="text-left small">
                         <label class="font-weight-bold">Valores</label><br>
                         @foreach ($prices as $price)
-                        @if ($price->restaurant_id == $cardapio->restaurant->id)
-                        {{ $price->size->name }} - R$ {{ $price->price }}<br>
+                        @if ($cardapio->restaurant && $price->restaurant_id == $cardapio->restaurant->id)
+                        {{ $price->size ? $price->size->name : 'Tamanho não disponível' }} - R$ {{ $price->price ?? 'Preço não disponível' }}<br>
                         @endif
                         @endforeach
                     </div>

@@ -31,6 +31,7 @@ Route::put('/perfil/atualizar-senha', [ChangePasswordController::class, 'update'
 //--------> MEUS PEDIDOS USUÁRIO<--------//
 Route::middleware('auth')->group(function () {
 Route::get('/meuspedidos', [PedidoController::class, 'meuspedidos'])->name('meuspedidos');
+Route::delete('/meuspedidos/{pedido}', [PedidoController::class, 'destroyorder'])->name('destroyorder');
 });
 
 // Rotas CARDÁPIO DO DIA DA PÁGINA DO USUÁRIO

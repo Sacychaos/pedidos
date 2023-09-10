@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,5 +75,23 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.index')->with('success', 'Pedido excluído com sucesso.');
     }
 
+    public function destroyorder($id)
+    {
+        // Encontre o pedido pelo ID
+        $pedido = Order::find($id);
+
+        // Verifique se é antes das 9:30 da manhã
+        $horaAtual = Carbon::now();
+        $horaLimite = Carbon::today()->setHour(20)->setMinute(30);
+
+        if ($horaAtual->lessThan($horaLimite)) {
+            // É antes das 9:30 da manhã, permita a exclusão
+            $pedido->delete();
+            return redirect()->back()->with('success', 'Pedido excluído com sucesso.');
+        } else {
+            // É igual ou depois das 9:30 da manhã, não permita a exclusão
+            return redirect()->back()->with('error', 'Você não pode excluir seu pedido depois das 09:30. Por favor, entre em contato com a Recepção');
+        }
+    }
 
 }

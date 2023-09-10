@@ -32,6 +32,7 @@
                         <th>Refrigerante</th>
                         <th>Troco Para</th>
                         <th>Observações</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,6 +73,14 @@
                         <td>{{ $pedido->soda }}</td>
                         <td>{{ $pedido->change }}</td>
                         <td>{{ $pedido->observations }}</td>
+                        <td>
+                            <!-- Botão de Exclusão -->
+                            <form action="{{ route('destroyorder', $pedido->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        </td>
 
                     </tr>
                     @endforeach
@@ -82,6 +91,17 @@
         <p>Nenhum pedido feito neste dia.</p>
         @endif
     </div>
+    @if (session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session()->get('error') }}
+    </div>
+@endif
 </div>
 
 <script>

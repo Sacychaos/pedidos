@@ -131,11 +131,11 @@
                 @foreach ($menus as $menu)
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <p><strong>Restaurante:</strong> {{ $menu->restaurant->name }}</p>
+                        <p><strong>Restaurante:</strong> {{ $menu->restaurant ? $menu->restaurant->name : 'Nome não disponível'}}</p>
                         <p><strong>Opções Selecionadas:</strong></p>
                         <ul>
                             @foreach ($menu->menuOptions as $menuOption)
-                            <li>{{ $menuOption->option->name }}</li>
+                            <li>{{ $menuOption->option ? $menuOption->option->name : 'Nome da opção não disponível' }}</li>
                             @endforeach
                         </ul>
                     </div>

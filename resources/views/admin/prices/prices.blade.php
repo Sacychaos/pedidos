@@ -54,7 +54,7 @@
         <tbody>
             @foreach($prices as $price)
             <tr>
-                <td>{{ $price->restaurant->name }}</td>
+                <td>{{ $price->restaurant ? $price->restaurant->name : '' }}</td>
                 <td>{{ $price->size->name }}</td>
                 <td>{{ $price->price }}</td>
                 <td>
