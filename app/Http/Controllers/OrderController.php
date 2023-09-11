@@ -50,7 +50,7 @@ class OrderController extends Controller
             // Verificar se o usuário não é um administrador
             if (!$user->is_admin) {
                  //Verificar se o horário atual é depois das 9:30
-                $deadline = Carbon::createFromTime(23, 30);
+                $deadline = Carbon::createFromTime(9, 30);
                 $now = now();
                 if ($now->greaterThanOrEqualTo($deadline)) {
                     //Se for depois das 9:30, retornar um erro

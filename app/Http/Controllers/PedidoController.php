@@ -82,7 +82,7 @@ class PedidoController extends Controller
 
         // Verifique se é antes das 9:30 da manhã
         $horaAtual = Carbon::now();
-        $horaLimite = Carbon::today()->setHour(20)->setMinute(30);
+        $horaLimite = Carbon::today()->setHour(9)->setMinute(30);
 
         if ($horaAtual->lessThan($horaLimite)) {
             // É antes das 9:30 da manhã, permita a exclusão
