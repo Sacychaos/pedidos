@@ -28,7 +28,7 @@ return new class extends Migration
         User::create([
             'name' => 'Admin',
             'username' => 'admin', // Substitua pelo nome de usuário desejado
-            'password' => bcrypt('teste'),
+            'password' => bcrypt('admin'),
             'is_admin' => true,
             'created_at' => now(),
             'updated_at' => now(),
