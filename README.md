@@ -9,7 +9,7 @@
 
 ## Passos para rodar a aplicação
 
-Instalar o PHP
+Instalar o PHP<br>
 Instalar o Composer
 Baixar as dependências do projeto usando "composer update"
 Atualizar arquivo .env com o banco a ser usado
