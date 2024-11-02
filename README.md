@@ -10,8 +10,8 @@
 ## Passos para rodar a aplicação
 
 Instalar o PHP<br>
-Instalar o Composer
-Baixar as dependências do projeto usando "composer update"
-Atualizar arquivo .env com o banco a ser usado
-Rodar as migrações para criação do bd com as tabelas "php artisan migrate"
-Rodar comando "php artisan key:generate" para gerar uma chave
+Instalar o Composer<br>
+Baixar as dependências do projeto usando "composer update"<br>
+Atualizar arquivo .env com o banco a ser usado<br>
+Rodar as migrações para criação do bd com as tabelas "php artisan migrate"<br>
+Rodar comando "php artisan key:generate" para gerar uma chave<br>
